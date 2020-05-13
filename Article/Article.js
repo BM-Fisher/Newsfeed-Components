@@ -111,10 +111,16 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+const articles =  document.querySelector('.articles')
+
+data.map(element => {
+  articles.appendChild(articleMaker)
+})
+
 const articleMaker = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
   // creating elements
   const article = document.createElement('div')
-  const aTile = document.createElement('h2')
+  const aTitle = document.createElement('h2')
   const aDate = document.createElement('p')
   const para1 = document.createElement('p')
   const para2 = document.createElement('p')
@@ -122,9 +128,31 @@ const articleMaker = (title, date, firstParagraph, secondParagraph, thirdParagra
   const btn = document.createElement('span')
 
   // giving structure
-// article.appendChild(aTile, aDate, para1, para2, para3, btn)
-console.log(article);
+  article.appendChild(aTile)
+  article.appendChild(aDate)
+  article.appendChild(para1)
+  article.appendChild(apara2)
+  article.appendChild(para3)
+  article.appendChild(btn)
   // adding classes
+  article.classList.add('article')
+  aDate.classList.add('date')
+  btn.classList.add('expandButton')
+
+  // adding content
+  aTitle.textContent = title
+  aDate.textContent = date
+  para1.textContent = firstParagraph
+  para2.textContent = secondParagraph
+  para3.textContent = thirdParagraph
+
+  // Event listener for btn
+  btn.addEventListener('click', () => {
+    console.log('Button Clicked')
+    article.classList.toggle('article-open')
+  })
+
+  return article
 }
 
 console.log('test')
