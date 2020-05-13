@@ -113,9 +113,7 @@ const data = [
 */
 const articles =  document.querySelector('.articles')
 
-data.map(element => {
-  articles.appendChild(articleMaker)
-})
+
 
 const articleMaker = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
   // creating elements
@@ -128,12 +126,13 @@ const articleMaker = (title, date, firstParagraph, secondParagraph, thirdParagra
   const btn = document.createElement('span')
 
   // giving structure
-  article.appendChild(aTile)
+  article.appendChild(aTitle)
   article.appendChild(aDate)
   article.appendChild(para1)
-  article.appendChild(apara2)
+  article.appendChild(para2)
   article.appendChild(para3)
   article.appendChild(btn)
+
   // adding classes
   article.classList.add('article')
   aDate.classList.add('date')
@@ -145,6 +144,7 @@ const articleMaker = (title, date, firstParagraph, secondParagraph, thirdParagra
   para1.textContent = firstParagraph
   para2.textContent = secondParagraph
   para3.textContent = thirdParagraph
+  btn.textContent = 'More';
 
   // Event listener for btn
   btn.addEventListener('click', () => {
@@ -156,3 +156,7 @@ const articleMaker = (title, date, firstParagraph, secondParagraph, thirdParagra
 }
 
 console.log('test')
+
+data.map(element => {
+  articles.appendChild(articleMaker(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph))
+})
