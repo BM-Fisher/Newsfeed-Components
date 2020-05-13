@@ -85,6 +85,23 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Ballad of Groot',
+    date: 'May 12th, 2020',
+    firstParagraph: `I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. 
+                      I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. 
+                      I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. 
+                      I am Groot. I am Groot. I am Groot. I am Groot.`,
+
+    secondParagraph: `I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. 
+                      I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. 
+                      I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. 
+                      I am Groot. I am Groot. I am Groot. I am Groot?`,
+
+    thirdParagraph: `I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. 
+                    I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot.  
+                    I am Groot. I am Groot. I am Groot. I am Groot!`
   }
 ];
 
@@ -144,19 +161,23 @@ const articleMaker = (title, date, firstParagraph, secondParagraph, thirdParagra
   para1.textContent = firstParagraph
   para2.textContent = secondParagraph
   para3.textContent = thirdParagraph
-  btn.textContent = 'More';
+  btn.textContent = '...';
 
   // Event listener for btn
   btn.addEventListener('click', () => {
-    console.log('Button Clicked')
+    console.log('Button Clicked', btn)
     article.classList.toggle('article-open')
   })
 
   return article
 }
 
-console.log('test')
+// WORKS WITH A forEach AND A map...YAY!
 
-data.map(element => {
+// data.map(element => {
+//   articles.appendChild(articleMaker(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph))
+// })
+
+data.forEach(element => {
   articles.appendChild(articleMaker(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph))
 })
