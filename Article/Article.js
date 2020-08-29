@@ -85,6 +85,23 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Ballad of Groot',
+    date: 'May 12th, 2020',
+    firstParagraph: `I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. 
+                      I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. 
+                      I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. 
+                      I am Groot. I am Groot. I am Groot. I am Groot.`,
+
+    secondParagraph: `I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. 
+                      I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. 
+                      I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. 
+                      I am Groot. I am Groot. I am Groot. I am Groot?`,
+
+    thirdParagraph: `I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. 
+                    I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot.  
+                    I am Groot. I am Groot. I am Groot. I am Groot!`
   }
 ];
 
@@ -111,3 +128,56 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+const articles =  document.querySelector('.articles')
+
+
+
+const articleMaker = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
+  // creating elements
+  const article = document.createElement('div')
+  const aTitle = document.createElement('h2')
+  const aDate = document.createElement('p')
+  const para1 = document.createElement('p')
+  const para2 = document.createElement('p')
+  const para3 = document.createElement('p')
+  const btn = document.createElement('span')
+
+  // giving structure
+  article.appendChild(aTitle)
+  article.appendChild(aDate)
+  article.appendChild(para1)
+  article.appendChild(para2)
+  article.appendChild(para3)
+  article.appendChild(btn)
+
+  // adding classes
+  article.classList.add('article')
+  aDate.classList.add('date')
+  btn.classList.add('expandButton')
+
+  // adding content
+  aTitle.textContent = title
+  aDate.textContent = date
+  para1.textContent = firstParagraph
+  para2.textContent = secondParagraph
+  para3.textContent = thirdParagraph
+  btn.textContent = '...';
+
+  // Event listener for btn
+  btn.addEventListener('click', () => {
+    console.log('Button Clicked', btn)
+    article.classList.toggle('article-open')
+  })
+
+  return article
+}
+
+// WORKS WITH A forEach AND A map...YAY!
+
+// data.map(element => {
+//   articles.appendChild(articleMaker(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph))
+// })
+
+data.forEach(element => {
+  articles.appendChild(articleMaker(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph))
+})
